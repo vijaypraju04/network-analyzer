@@ -1,0 +1,25 @@
+{
+  "nodes": [
+    {"id": "Ramy", "group": 1},
+    {"id": "Vijay", "group": 1},
+    {"id": "Soccer", "group": 2},
+    {"id": "Reading", "group": 2},
+    {"id": "Data Visualization", "group": 2},
+    {"id": "Coding", "group": 2},
+    {"id": "Basketball", "group": 2}
+
+  ],
+  "links": [
+    {"source": "Ramy", "target": "Soccer", "value": 5},
+    {"source": "Ramy", "target": "Reading", "value": 3},
+    {"source": "Ramy", "target": "Data Visualization", "value": 5},
+    {"source": "Ramy", "target": "Coding", "value": 5},
+    {"source": "Ramy", "target": "Basketball", "value": 1},
+
+    {"source": "Vijay", "target": "Soccer", "value": 1},
+    {"source": "Vijay", "target": "Reading", "value": 2},
+    {"source": "Vijay", "target": "Data Visualization", "value": 5},
+    {"source": "Vijay", "target": "Coding", "value": 5},
+    {"source": "Vijay", "target": "Basketball", "value": 4}
+  ]
+}
