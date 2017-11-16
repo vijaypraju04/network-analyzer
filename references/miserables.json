@@ -23,3 +23,49 @@
     {"source": "Vijay", "target": "Basketball", "value": 4}
   ]
 }
+
+
+
+// links = [
+//   {source: "Ramy", target: "Soccer", type: "hobby", value:10},
+//   {source: "Ramy", target: "Engineering", type: "interested", value:5},
+//   {source: "Ramy", target: "Basketball", type: "interested", value:5},
+//   {source: "Ramy", target: "Football", type: "hobby", value:10},
+//   {source: "Ramy", target: "Entrepreneurship", type: "passion", value:10},
+//   {source: "Ramy", target: "Art", type: "passion", value:10},
+//   {source: "Ramy", target: "DJ", type: "passion", value:10},
+//
+//   {source: "Vijay", target: "Soccer", type: "hobby", value:10},
+//   {source: "Vijay", target: "Javascript", type: "passion", value:1},
+//   {source: "Vijay", target: "D3", type: "passion", value:10},
+//   {source: "Vijay", target: "Video Games", type: "passion", value:200},
+//   {source: "Vijay", target: "Engineering", type: "interested", value:10},
+//
+//   {source: "Gene", target: "Soccer", type: "interested", value:10},
+//   {source: "Gene", target: "Javascript", type: "hobby", value:10},
+//   {source: "Gene", target: "Basketball", type: "interested", value:10},
+//   {source: "Gene", target: "Football", type: "interested", value:10},
+//   {source: "Gene", target: "Entrepreneurship", type: "passion", value:10},
+//
+//   {source: "Diego", target: "Coffee", type: "interested", value:10},
+//   {source: "Diego", target: "Pokemon", type: "interested", value:10},
+//   {source: "Diego", target: "Politics", type: "passion", value:10},
+//   {source: "Diego", target: "Basketball", type: "passion", value:10},
+//
+//   {source: "Es", target: "Javascript", type: "interested", value:10},
+//   {source: "Es", target: "Ruby", type: "passion", value:10},
+//   {source: "Es", target: "Teaching", type: "passion", value:10},
+//   {source: "Es", target: "Football", type: "passion", value:10},
+//
+//   {source: "Jason", target: "Javascript", type: "interested", value:10},
+//   {source: "Jason", target: "Ruby", type: "interested", value:10},
+//   {source: "Jason", target: "Coffee", type: "passion", value:10},
+//   {source: "Jason", target: "Teaching", type: "passion", value:10},
+//
+//   {source: "Alex", target: "Javascript", type: "interested", value:10},
+//   {source: "Alex", target: "Ruby", type: "interested", value:10},
+//   {source: "Alex", target: "Art", type: "passion", value:10},
+//   {source: "Alex", target: "Teaching", type: "passion", value:10},
+//
+//   {source: "Avi", target: "DJ", type: "interested", value:10},
+// ];

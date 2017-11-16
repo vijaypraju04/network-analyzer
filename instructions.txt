@@ -1,0 +1,33 @@
+1. Create Demo Branch
+
+2. Remove Node(User) Selector
+
+3. Create single post request that submits to Server:
+
+Example:
+{
+    "id": 1,
+    "name": "Vijay",
+    "bio": "I really like coding. One day I want to save the world with my coding skills. My dream is to become as good of a coder as Ramy.",
+    "photo": "https://lh5.googleusercontent.com/-KXj_fTpYYmU/AAAAAAAAAAI/AAAAAAAAABo/JVVT3fkMWXs/photo.jpg",
+    "contact": "vijaypraju04@gmail.com",
+    "targets": [
+      {
+        "name": "Painting",
+        "category": "Art"
+      },
+      {
+        "name": "Soccer",
+        "category": "Sports"
+      }
+    ],
+    "links": [
+      {
+        "id": 1,
+        "kind": "Hobby"
+      },
+      {
+        "id": 7,
+        "kind": "Interest"
+      }
+    ]

@@ -1,54 +1,98 @@
+links = [];
+users = [];
+targets = [];
+clickables = [];
+createdCard = false;
 
-links = [
-  {source: "Ramy", target: "Soccer", type: "hobby", value:10},
-  {source: "Ramy", target: "Engineering", type: "interested", value:5},
-  {source: "Ramy", target: "Basketball", type: "interested", value:5},
-  {source: "Ramy", target: "Football", type: "hobby", value:10},
-  {source: "Ramy", target: "Entrepreneurship", type: "passion", value:10},
-  {source: "Ramy", target: "Art", type: "passion", value:10},
-  {source: "Ramy", target: "DJ", type: "passion", value:10},
+$(document).ready(fetch("https://network-analyzer.herokuapp.com/api/v1/links").then(res => res.json()).then(res=>data = res).then(res=>createlinks()));
 
-  {source: "Vijay", target: "Soccer", type: "hobby", value:10},
-  {source: "Vijay", target: "Javascript", type: "passion", value:1},
-  {source: "Vijay", target: "D3", type: "passion", value:10},
-  {source: "Vijay", target: "Video Games", type: "passion", value:200},
-  {source: "Vijay", target: "Engineering", type: "interested", value:10},
+$(document).ready(fetch("https://network-analyzer.herokuapp.com/api/v1/users").then(res => res.json()).then(res=>userdata = res).then(res=>createusers()))
 
-  {source: "Gene", target: "Soccer", type: "interested", value:10},
-  {source: "Gene", target: "Javascript", type: "hobby", value:10},
-  {source: "Gene", target: "Basketball", type: "interested", value:10},
-  {source: "Gene", target: "Football", type: "interested", value:10},
-  {source: "Gene", target: "Entrepreneurship", type: "passion", value:10},
+$(document).ready(fetch("https://network-analyzer.herokuapp.com/api/v1/targets").then(res => res.json()).then(res=>targetdata = res).then(res=>createtargets()))
 
-  {source: "Diego", target: "Coffee", type: "interested", value:10},
-  {source: "Diego", target: "Pokemon", type: "interested", value:10},
-  {source: "Diego", target: "Politics", type: "passion", value:10},
-  {source: "Diego", target: "Basketball", type: "passion", value:10},
+function createlinks(){
+  for (var link of data) {
+    object = {}
+    object.source = link.user.name;
+    object.target = link.target.name;
+    object.type = link.kind.toLowerCase();
+    links.push(object)
+}}
 
-  {source: "Es", target: "Javascript", type: "interested", value:10},
-  {source: "Es", target: "Ruby", type: "passion", value:10},
-  {source: "Es", target: "Teaching", type: "passion", value:10},
-  {source: "Es", target: "Football", type: "passion", value:10},
+function createusers(){
+  for (var user of userdata) {
+    object = {}
+    object.name = user.name;
+    object.bio = user.bio;
+    object.photo = user.photo;
+    object.contact = user.contact;
+    users.push(object);
+    clickables.push(object);
+}}
 
-  {source: "Jason", target: "Javascript", type: "interested", value:10},
-  {source: "Jason", target: "Ruby", type: "interested", value:10},
-  {source: "Jason", target: "Coffee", type: "passion", value:10},
-  {source: "Jason", target: "Teaching", type: "passion", value:10},
+function createusers(){
+  for (var user of targetdata) {
+    object = {}
+    object.name = user.name;
+    object.bio = user.bio;
+    object.photo = user.photo;
+    object.contact = user.contact;
+    users.push(object);
+    clickables.push(object);
+}}
 
-  {source: "Alex", target: "Javascript", type: "interested", value:10},
-  {source: "Alex", target: "Ruby", type: "interested", value:10},
-  {source: "Alex", target: "Art", type: "passion", value:10},
-  {source: "Alex", target: "Teaching", type: "passion", value:10},
+function finduser(searchname){
+  for (user of users) {
+  	if (user.name === searchname){
+      return user
+    }
+  }
+}
 
-  {source: "Avi", target: "DJ", type: "interested", value:10},
-];
 
 nodes = {};
+
+function addlistener(){
+$("svg").on( "click", "circle", function() {
+  let name = this.__data__.name;
+  if (createdCard){
+    updateCard(name);
+  }
+  else {
+    createCard(name);
+  }
+});
+}
+
+function createCard(name) {
+  createdCard = true;
+  console.log(name);
+  let cardname = finduser(name)
+  console.log(cardname);
+  div = document.createElement('div');
+    div.className = 'row';
+    div.innerHTML = `<div class="image">\
+        <img src="${cardname.photo}">\
+      </div>\
+      <div class="content">\
+        <a id="cardname" class="header">${cardname.name}</a>\
+        <div class="meta">\
+          <span id="cardcontent" class="date">${cardname.contact}</span>\
+        </div>\
+        <div id="cardbio" class="description">\
+          ${cardname.bio}\
+        </div>\
+      </div>\
+    </div>`
+    document.querySelector('.container').appendChild(div);
+}
 
 // Compute the distinct nodes from the links.
 
 
 function runPage() {
+
+
 
 links.forEach(function(link) {
   link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
@@ -130,6 +174,8 @@ function linkArc(d) {
 function transform(d) {
   return "translate(" + d.x + "," + d.y + ")";
 }
+
+addlistener();
 }
 
 function clearPage(){
