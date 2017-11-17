@@ -178,7 +178,7 @@ bodyJSON = {
     if (targInput.length !== 0) {
       for(var i=0; i < targInput.length; i++){
         let newObject = {
-          "source":nameCapitaized,
+          "source":nameCapitalized,
         	"target" :targInput[i].charAt(0).toUpperCase()+targInput[i].slice(1),
         	"type" : linkInput[i].charAt(0).toUpperCase()+linkInput[i].slice(1)
             }
