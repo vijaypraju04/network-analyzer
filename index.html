@@ -26,12 +26,37 @@
          Friends
          </a>
       </div>
-      <div class ="ui container inverted">
+      <div id="header" class ="ui container inverted">
          <h1>Welcome to our Network Analyzer</h1>
          <h3>Explore your communities in unique ways</h3>
+
+        <br>
+
+          <div id="main">
+        <div class="ui tiny form">
+             <div class="field" style= "float:left;width:300px;">
+               <label>Name</label>
+               <input id="name" placeholder="Enter Full Name" type="text">
+             </div>
+        <div class="field" style= "float:left;width:300px;">
+      <label>E-mail</label>
+      <input type="email" id="email" placeholder="Enter Email">
+        </div>
+        <div class="field" style= "float:left;width:300px;">
+            <label>Upload Photo</label>
+            <input id="photolink" placeholder="Upload Photo Link" type="text">
+              </div>
+           <div  class="field">
+             <label>Short Biography</label>
+             <textarea id="bio"></textarea>
+           </div>
+         </div>
+      <div>
+        <br>
+
          <div class="ui sub header">Passions</div>
          <div id="multi-drop" class="ui fluid multiple search selection dropdown">
-            <input name="tags" type="hidden">
+            <input id="passions" name="tags" type="hidden">
             <i class="dropdown icon"></i>
             <div class="default text">Select from exisiting or input your own</div>
             <div class="menu">
@@ -55,7 +80,7 @@
          </div>
          <div class="ui sub header">Hobbies</div>
          <div id="multi-drop1" class="ui fluid multiple search selection dropdown">
-            <input name="tags" type="hidden">
+            <input id="hobbies" name="tags" type="hidden">
             <i class="dropdown icon"></i>
             <div class="default text">Select from exisiting or input your own</div>
             <div class="menu">
@@ -79,7 +104,7 @@
          </div>
          <div class="ui sub header">Interests</div>
          <div id="multi-drop2" class="ui fluid multiple search selection dropdown">
-            <input name="tags" type="hidden">
+            <input id="interests" name="tags" type="hidden">
             <i class="dropdown icon"></i>
             <div class="default text">Select from exisiting or input your own</div>
             <div class="menu">
@@ -123,7 +148,7 @@
            });
          });
 
-         $('#analyze').click(()=>{runPage();})
+         $('#analyze').click(()=>{updateBackend();})
       </script>
       <body>
 </html>

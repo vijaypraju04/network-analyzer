@@ -4,7 +4,7 @@ targets = [];
 clickables = [];
 createdCard = false;
 
-$(document).ready(fetch("https://network-analyzer.herokuapp.com/api/v1/links").then(res => res.json()).then(res=>data = res).then(res=>createlinks()));
+$(document).ready(fetch("http://localhost:3000/api/v1/links").then(res => res.json()).then(res=>data = res).then(res=>createlinks()));
 
 $(document).ready(fetch("https://network-analyzer.herokuapp.com/api/v1/users").then(res => res.json()).then(res=>userdata = res).then(res=>createusers()))
 
@@ -89,10 +89,196 @@ function createCard(name) {
 
 // Compute the distinct nodes from the links.
 
+/// Vijay JS November 16
+
+window.addEventListener('load', getFetch)
+
+function getFetch() {
+fetch('https://network-analyzer.herokuapp.com/api/v1/users')
+.then(res=> res.json())
+.then(json => getUsers(json))
+}
+
+function getUsers(data) {
+  let userArr = []
+  for (let i = 0; i < data.length; i++) {
+    userArr.push(data[i]["name"])
+  }
+  return getDropDown(userArr)
+}
+
+function getDropDown(userArr) {
+  for (let i = 0; i < userArr.length; i++) {
+    let option = document.createElement("OPTION")
+    let selectUser = document.getElementById("selectuser")
+    let txt = document.createTextNode(userArr[i])
+    option.appendChild(txt)
+    option.setAttribute("value", userArr[i])
+    selectUser.insertBefore(option, selectUser.lastChild)
+  }
+}
+
+
+function getTargetArray() {
+  let multiDrop1 = document.getElementById("multi-drop").querySelector("input").value.split(",")
+  let multiDrop2 = document.getElementById("multi-drop1").querySelector("input").value.split(",")
+  let multiDrop3 = document.getElementById("multi-drop2").querySelector("input").value.split(",")
+
+  if (multiDrop1 == ""){
+    multiDrop1 = []
+  }
+
+  if (multiDrop2 == ""){
+    multiDrop2 = []
+  }
+
+  if (multiDrop3 == ""){
+    multiDrop3 = []
+  }
+
+  let passionCount = multiDrop1.length
+  let hobbiesCount = multiDrop2.length
+  let interestCount = multiDrop3.length
+
+  countArray = []
+
+  for(var i=0; i < passionCount; i++){
+    countArray.push("passion")
+  }
+
+  for(var i=0; i < hobbiesCount; i++){
+    countArray.push("hobby")
+  }
+
+  for(var i=0; i < interestCount; i++){
+    countArray.push("interest")
+  }
+
+  console.log(countArray)
+
+ let firstArr = multiDrop1.concat(multiDrop2)
+ let finalArr = firstArr.concat(multiDrop3)
+
+ return { kind : countArray, targets : finalArr };
+}
+
+function getTargetString(targetArr) {
+  for (let i = 0; i < targetArr.length; i++) {
+    if (targetArr[i] !== "") {
+      postTarget(targetArr[i])
+    }
+  }
+}
+
+
+// function postUser() {
+//
+//   bodyJSON = {
+//     "user":{
+//       "name":document.getElementById("name").value,
+//       "contact":document.getElementById("email").value,
+//       "photo":document.getElementById("photolink").value,
+//       "bio":document.getElementById("bio").value,
+//       "target_params" :{
+//         "name":"gym"
+//       },
+//       "link_params": {
+//         "kind": "passions"
+//       }
+//     }
+//    }
+//
+//
+// fetch("http://localhost:3000/api/v1/users", {
+//        method: 'POST',
+//        headers: {
+//          'Content-Type': 'application/json',
+//          'Accept': 'application/json'
+//        },
+//        body: JSON.stringify(bodyJSON)
+//      })
+//    }
+//
+//
+// function postTarget(eachValue) {
+//
+//  bodyJSON = {
+//     "name": eachValue,
+//     "category": "dummydata"
+//   }
+//   fetch("https://network-analyzer.herokuapp.com/api/v1/targets", {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'Accept': 'application/json'
+//     },
+//     body: JSON.stringify(bodyJSON)
+//   })
+// }
+
+
+function postData(){
+targInput = getTargetArray().targets
+linkInput = getTargetArray().kind
+
+let newName = document.getElementById("name").value
+let nameCapitaized = newName.charAt(0).toUpperCase()+newName.slice(1),
+
+
+bodyJSON = {
+    "user":{
+      "name":nameCapitaized,
+      "contact":document.getElementById("email").value,
+      "photo":document.getElementById("photolink").value,
+      "bio":document.getElementById("bio").value},
+	"target" :{
+        "name":targInput
+      },
+	"link" : {
+        "kind":linkInput
+      }
+    }
+
+
+    if (targInput.length !== 0) {
+      for(var i=0; i < targInput.length; i++){
+        let newObject = {
+          "source":nameCapitaized,
+        	"target" :targInput[i].charAt(0).toUpperCase()+targInput[i].slice(1),
+        	"type" : linkInput[i].charAt(0).toUpperCase()+linkInput[i].slice(1)
+            }
+        links.push(newObject)
+      }
+    }
+
+fetch("http://localhost:3000/api/v1/users", {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+         'Accept': 'application/json'
+       },
+       body: JSON.stringify(bodyJSON)
+     })
+}
+
+/// END - Vijay JS November 16
+
+function addRefreshButton() {
+  $('#header').append('<input class="ui button" type="button" value="Reload Page" onClick="window.location.reload()">');
+}
+
+function updateBackend(){
+  postData();
+  clearPage();
+  runPage();
+}
+
+function clearPage() {
+  d3.selectAll("svg > *").remove();
+}
+
 
 function runPage() {
-
-
 
 links.forEach(function(link) {
   link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
@@ -103,9 +289,8 @@ links.forEach(function(link) {
   (link.target.group = 2);
 });
 
-
 var color = d3.scale.category10().domain([0, 1, 2]);
-var width = 1000,
+var width = 1800,
     height = 600;
 
 
@@ -176,8 +361,8 @@ function transform(d) {
 }
 
 addlistener();
-}
+$('#main').remove();
+addRefreshButton()
 
-function clearPage(){
-  nodes ={};
+
 }
