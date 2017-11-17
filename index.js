@@ -80,7 +80,7 @@ function removeCard() {
 }
 
 function createCard(name) {
-  if (createdCard){document.querySelector('#sidecard').remove();}
+  if (!!document.querySelector('#sidecard')){document.querySelector('#sidecard').remove();}
   createdCard = true;
   let cardname = finduser(name)
   div = document.createElement('div');
@@ -111,6 +111,7 @@ function createCard(name) {
     document.querySelector('#nav').appendChild(div);
     document.querySelector('#remove').addEventListener("click", () => {
       removeCard();
+
 })
 }
 
