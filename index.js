@@ -4,7 +4,7 @@ targets = [];
 clickables = [];
 createdCard = false;
 
-$(document).ready(fetch("http://localhost:3000/api/v1/links").then(res => res.json()).then(res=>data = res).then(res=>createlinks()));
+$(document).ready(fetch("https://network-analyzer.herokuapp.com/api/v1/links").then(res => res.json()).then(res=>data = res).then(res=>createlinks()));
 
 $(document).ready(fetch("https://network-analyzer.herokuapp.com/api/v1/users").then(res => res.json()).then(res=>userdata = res).then(res=>createusers()))
 
@@ -251,7 +251,7 @@ bodyJSON = {
       }
     }
 
-fetch("http://localhost:3000/api/v1/users", {
+fetch("https://network-analyzer.herokuapp.com/api/v1/users", {
        method: 'POST',
        headers: {
          'Content-Type': 'application/json',
