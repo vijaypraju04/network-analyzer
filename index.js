@@ -66,21 +66,31 @@ function getDropDown(id,userArr) {
 nodes = {};
 
 function addlistener(){
-$("svg").on( "click", "circle", function() {
+$("#nav").on( "click", "circle", function() {
   let name = this.__data__.name;
   console.log(name)
+  createCard(name)
 
 });
 }
 
+function removeCard() {
+  document.querySelector('#sidecard').remove();
+  createdCard = false;
+}
+
 function createCard(name) {
+  if (createdCard){document.querySelector('#sidecard').remove();}
   createdCard = true;
-  console.log(name);
   let cardname = finduser(name)
-  console.log(cardname);
   div = document.createElement('div');
+  if (cardname.photo == ""){
+    cardname.photo ="https://image.flaticon.com/icons/png/512/616/616408.png"
+  }
     div.className = 'row';
-    div.innerHTML = `<div class="image">\
+    div.innerHTML = `
+    <div id="sidecard" class="ui card">\
+    <div class="image">\
         <img src="${cardname.photo}">\
       </div>\
       <div class="content">\
@@ -92,9 +102,18 @@ function createCard(name) {
           ${cardname.bio}\
         </div>\
       </div>\
+      <div id="remove" class="ui bottom attached button">\
+      <i class="add icon"></i>\
+      Remove Box\
+      </div>\
+    </div>\
     </div>`
-    document.querySelector('.container').appendChild(div);
+    document.querySelector('#nav').appendChild(div);
+    document.querySelector('#remove').addEventListener("click", () => {
+      removeCard();
+})
 }
+
 
 // Compute the distinct nodes from the links.
 
@@ -226,7 +245,7 @@ links.forEach(function(link) {
 
 var color = d3.scale.category10().domain([0, 1, 2]);
 var width = 1800,
-    height = 600;
+    height = 1000;
 
 
 var force = d3.layout.force()
