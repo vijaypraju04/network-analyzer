@@ -1,154 +1,173 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8">
-      <title>NetWorks</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.css">
-      <script
-         src="https://code.jquery.com/jquery-3.1.1.min.js"
-         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-         crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.js"></script>
-      <link rel="stylesheet" href="index.css">
-   </head>
-   <body>
-      <div class="ui left demo vertical inverted sidebar labeled icon menu">
-         <a class="item">
-         <i class="home icon"></i>
-         Reset
-         </a>
-         <a class="item">
-         <i class="block layout icon"></i>
-         Topics
-         </a>
-         <a class="item">
-         <i class="smile icon"></i>
-         Friends
-         </a>
+
+<head>
+    <meta charset="utf-8">
+    <title>NetWorks</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+      <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" media="screen" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="ui fixed inverted menu">
+    <div class="ui container">
+      <div class="header item">
+        <img class="logo" src="logo.png" style="width:30px">
+           Network Analyzer
       </div>
-      <div id="header" class ="ui container inverted">
-         <h1>Welcome to our Network Analyzer</h1>
-         <h3>Explore your communities in unique ways</h3>
+    </div>
+  </div>
+  <div id = "nav">
+  </div>
+  <div id="particles-js">
 
-        <br>
 
-          <div id="main">
-        <div class="ui tiny form">
-             <div class="field" style= "float:left;width:300px;">
-               <label>Name</label>
-               <input id="name" placeholder="Enter Full Name" type="text">
-             </div>
-        <div class="field" style= "float:left;width:300px;">
-      <label>E-mail</label>
-      <input type="email" id="email" placeholder="Enter Email">
+        <div id="header">
+          <div class="panel">
+            <img class="logo" src="logo.png" style="width:80px">
+            <h1>Welcome to Network Analyzer</h1>
+            <h3>Explore your communities in unique ways</h3>
+            <button class="button ui" onclick="myFunction()">Get Started</button>
+          </div>
+
+            <br>
+
+            <div id="main" class="mainpanel" style="display: none;">
+                <div class="ui tiny form">
+                    <div class="field" >
+                        <label>Name</label>
+                        <input id="name" placeholder="Enter Full Name" type="text">
+                    </div>
+                    <div class="field">
+                        <label>E-mail:</label>
+                        <input type="email" id="email" placeholder="Enter Email">
+                    </div>
+                    <div class="field">
+                        <label>Link to Photo:</label>
+                        <input id="photolink" placeholder="Upload Photo Link" type="text">
+                    </div>
+                    <div class="field">
+                        <label>Short Bio:</label>
+                        <textarea id="bio"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <br>
+
+                    <div class="ui sub header">Passions</div>
+                    <div id="multi-drop" class="ui fluid multiple search selection dropdown">
+                        <input  name="tags" type="hidden">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select from exisiting or input your own</div>
+                        <div id="passions" class="menu">
+                            <div class="item" data-value="soccer">Soccer</div>
+                            <div class="item" data-value="engineering">Engineering</div>
+                            <div class="item" data-value="videogames">Video Games</div>
+                            <div class="item" data-value="basketball">Basketball</div>
+                            <div class="item" data-value="football">Football</div>
+                            <div class="item" data-value="javascript">Javascript</div>
+                            <div class="item" data-value="politics">Politics</div>
+                            <div class="item" data-value="coffee">Coffee</div>
+                            <div class="item" data-value="python">Python</div>
+                            <div class="item" data-value="rails">Rails</div>
+                            <div class="item" data-value="react">React</div>
+                            <div class="item" data-value="teaching">Teaching</div>
+                            <div class="item" data-value="ruby">Ruby</div>
+                            <div class="item" data-value="ui">UI Design</div>
+                        </div>
+                    </div>
+                    <div class="evaluated code" data-type="javascript">
+                    </div>
+                    <div class="ui sub header">Hobbies</div>
+                    <div id="multi-drop1" class="ui fluid multiple search selection dropdown">
+                        <input name="tags" type="hidden">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select from exisiting or input your own</div>
+                        <div id="hobbies" class="menu">
+                            <div class="item" data-value="soccer">Soccer</div>
+                            <div class="item" data-value="engineering">Engineering</div>
+                            <div class="item" data-value="videogames">Video Games</div>
+                            <div class="item" data-value="basketball">Basketball</div>
+                            <div class="item" data-value="football">Football</div>
+                            <div class="item" data-value="javascript">Javascript</div>
+                            <div class="item" data-value="politics">Politics</div>
+                            <div class="item" data-value="coffee">Coffee</div>
+                            <div class="item" data-value="python">Python</div>
+                            <div class="item" data-value="rails">Rails</div>
+                            <div class="item" data-value="react">React</div>
+                            <div class="item" data-value="teaching">Teaching</div>
+                            <div class="item" data-value="ruby">Ruby</div>
+                            <div class="item" data-value="ui">UI Design</div>
+                        </div>
+                    </div>
+                    <div class="evaluated code" data-type="javascript">
+                    </div>
+                    <div class="ui sub header">Interests</div>
+                    <div id="multi-drop2" class="ui fluid multiple search selection dropdown">
+                        <input name="tags" type="hidden">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select from exisiting or input your own</div>
+                        <div id="interests" class="menu">
+                            <div class="item" data-value="soccer">Soccer</div>
+                            <div class="item" data-value="engineering">Engineering</div>
+                            <div class="item" data-value="videogames">Video Games</div>
+                            <div class="item" data-value="basketball">Basketball</div>
+                            <div class="item" data-value="football">Football</div>
+                            <div class="item" data-value="javascript">Javascript</div>
+                            <div class="item" data-value="politics">Politics</div>
+                            <div class="item" data-value="coffee">Coffee</div>
+                            <div class="item" data-value="python">Python</div>
+                            <div class="item" data-value="rails">Rails</div>
+                            <div class="item" data-value="react">React</div>
+                            <div class="item" data-value="teaching">Teaching</div>
+                            <div class="item" data-value="ruby">Ruby</div>
+                            <div class="item" data-value="ui">UI Design</div>
+                        </div>
+                    </div>
+                    <div class="evaluated code" data-type="javascript">
+                    </div>
+                    <br>
+                    <button class="ui button" id="analyze" name="button">Analyze</button>
+                </div>
+            </div>
         </div>
-        <div class="field" style= "float:left;width:300px;">
-            <label>Upload Photo</label>
-            <input id="photolink" placeholder="Upload Photo Link" type="text">
-              </div>
-           <div  class="field">
-             <label>Short Biography</label>
-             <textarea id="bio"></textarea>
-           </div>
-         </div>
-      <div>
-        <br>
+    </div>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="index.js"></script>
+    <script src="particles.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        $('document').ready(() => {
+            $('#multi-drop')
+                .dropdown({
+                    allowAdditions: true
+                });
+            $('#multi-drop1')
+                .dropdown({
+                    allowAdditions: true
+                });
+            $('#multi-drop2')
+                .dropdown({
+                    allowAdditions: true
+                });
+        });
 
-         <div class="ui sub header">Passions</div>
-         <div id="multi-drop" class="ui fluid multiple search selection dropdown">
-            <input id="passions" name="tags" type="hidden">
-            <i class="dropdown icon"></i>
-            <div class="default text">Select from exisiting or input your own</div>
-            <div class="menu">
-               <div class="item" data-value="soccer">Soccer</div>
-               <div class="item" data-value="engineering">Engineering</div>
-               <div class="item" data-value="videogames">Video Games</div>
-               <div class="item" data-value="basketball">Basketball</div>
-               <div class="item" data-value="football">Football</div>
-               <div class="item" data-value="javascript">Javascript</div>
-               <div class="item" data-value="politics">Politics</div>
-               <div class="item" data-value="coffee">Coffee</div>
-               <div class="item" data-value="python">Python</div>
-               <div class="item" data-value="rails">Rails</div>
-               <div class="item" data-value="react">React</div>
-               <div class="item" data-value="repair">Teaching</div>
-               <div class="item" data-value="ruby">Ruby</div>
-               <div class="item" data-value="ui">UI Design</div>
-            </div>
-         </div>
-         <div class="evaluated code" data-type="javascript">
-         </div>
-         <div class="ui sub header">Hobbies</div>
-         <div id="multi-drop1" class="ui fluid multiple search selection dropdown">
-            <input id="hobbies" name="tags" type="hidden">
-            <i class="dropdown icon"></i>
-            <div class="default text">Select from exisiting or input your own</div>
-            <div class="menu">
-              <div class="item" data-value="soccer">Soccer</div>
-              <div class="item" data-value="engineering">Engineering</div>
-              <div class="item" data-value="videogames">Video Games</div>
-              <div class="item" data-value="basketball">Basketball</div>
-              <div class="item" data-value="football">Football</div>
-              <div class="item" data-value="javascript">Javascript</div>
-              <div class="item" data-value="politics">Politics</div>
-              <div class="item" data-value="coffee">Coffee</div>
-              <div class="item" data-value="python">Python</div>
-              <div class="item" data-value="rails">Rails</div>
-              <div class="item" data-value="react">React</div>
-              <div class="item" data-value="repair">Teaching</div>
-              <div class="item" data-value="ruby">Ruby</div>
-              <div class="item" data-value="ui">UI Design</div>
-            </div>
-         </div>
-         <div class="evaluated code" data-type="javascript">
-         </div>
-         <div class="ui sub header">Interests</div>
-         <div id="multi-drop2" class="ui fluid multiple search selection dropdown">
-            <input id="interests" name="tags" type="hidden">
-            <i class="dropdown icon"></i>
-            <div class="default text">Select from exisiting or input your own</div>
-            <div class="menu">
-              <div class="item" data-value="soccer">Soccer</div>
-              <div class="item" data-value="engineering">Engineering</div>
-              <div class="item" data-value="videogames">Video Games</div>
-              <div class="item" data-value="basketball">Basketball</div>
-              <div class="item" data-value="football">Football</div>
-              <div class="item" data-value="javascript">Javascript</div>
-              <div class="item" data-value="politics">Politics</div>
-              <div class="item" data-value="coffee">Coffee</div>
-              <div class="item" data-value="python">Python</div>
-              <div class="item" data-value="rails">Rails</div>
-              <div class="item" data-value="react">React</div>
-              <div class="item" data-value="repair">Teaching</div>
-              <div class="item" data-value="ruby">Ruby</div>
-              <div class="item" data-value="ui">UI Design</div>
-            </div>
-         </div>
-         <div class="evaluated code" data-type="javascript">
-         </div>
-         <br>
-         <button class="ui button" id="analyze" name="button">Analyze</button>
-      </div>
-      </div>
-      <script src="//d3js.org/d3.v3.min.js"></script>
-      <script src="index.js"></script>
-      <script>
-         $('document').ready(()=>{
-           $('#multi-drop')
-           .dropdown({
-             allowAdditions: true
-           });
-           $('#multi-drop1')
-           .dropdown({
-             allowAdditions: true
-           });
-           $('#multi-drop2')
-           .dropdown({
-             allowAdditions: true
-           });
-         });
+        function myFunction() {
+        $('#main').transition('fly left');
+        $('.panel').transition('fly right');
+        }
 
-         $('#analyze').click(()=>{updateBackend();})
-      </script>
-      <body>
+        $('#analyze').click(() => {
+            updateBackend();
+        })
+    </script>
+
+    <body>
+
 </html>

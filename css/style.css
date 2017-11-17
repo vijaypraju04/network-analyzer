@@ -1,3 +1,37 @@
 body, .stage {
-  background: #042029; 
+  background: #FFF;
+}
+
+.panel{
+  font-size:1.3em;
+  position: absolute;
+  z-index:10;
+  width:300px;
+  height:350px;
+  background-color:rgba(255,255,255,0.7);
+  top:50%;
+  left:45%;
+  margin:-110px 0 0 -100px;
+  padding:20px;
+  text-align: center;
+}
+
+
+.mainpanel{
+  font-size:1.3em;
+  position: absolute;
+  z-index:10;
+  width:80%;
+  height:100%;
+  margin-right: 10%;
+  margin-top: 100px;
+  margin-left: 10%;
+  background-color:rgba(255,255,255,0.7);
+  padding:20px;
+  text-align: left;
+  opacity: 30%;
+}
+
+.field {
+  width: 50%;
 }
