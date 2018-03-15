@@ -16,12 +16,12 @@ This is a fullstack application using D3 for data visualization. We chose to use
 
 ![alt text](https://thumbs.gfycat.com/OldSpecificGemsbok-size_restricted.gif)
 
-https://gfycat.com/gifs/detail/OldSpecificGemsbok
+VIDEO LINK - https://gfycat.com/gifs/detail/OldSpecificGemsbok
 
 
 ![alt text](https://thumbs.gfycat.com/DelayedIndelibleFairybluebird-size_restricted.gif)
 
-https://gfycat.com/gifs/detail/DelayedIndelibleFairybluebird
+VIDEO LINK - https://gfycat.com/gifs/detail/DelayedIndelibleFairybluebird
 
 
 
